@@ -257,4 +257,4 @@ c();
 
 // This is also the closure where the inner function will try to access the variable in the lexical parent and the then also the lexical scope of the outer parent
 
-  
+
