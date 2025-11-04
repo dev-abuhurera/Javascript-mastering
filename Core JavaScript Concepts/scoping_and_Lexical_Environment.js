@@ -150,7 +150,7 @@ w();
                     So, when if i try t0 --->> Log out the value of variable in the function --->>> js engine check the memory space of the LEC of the funciton ---->> If it don't get this in it ----->> the execution context will be moving to the lexical parent where the fuction existed
 
 
-                    Then the global Execution Context ---->> And then if the variable is not there --->>> It will be moving to the Null
+                    Then, the Global Execution Context ---->> And then if the variable is not there --->>> It will be moving to the Null
 
                 
                     (  Then it will say that the variable is not defined  )
