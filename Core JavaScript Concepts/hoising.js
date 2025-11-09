@@ -1,145 +1,118 @@
-//                                                                                                              Hoisting -------->>> in javascript
-
+// --------------------------------------------------------------------------------------------------------------
+//                                              Hoisting in JavaScript
+// --------------------------------------------------------------------------------------------------------------
 
 // let x = 5;
 
-// function getName(){
+// function getName() {
 //     console.log("Javascript");
 // }
 
 // console.log(x);
-
 // getName();
 
+// The code is executed as expected.
 
-// The code is executed as we have expected 
 
-
-getName(); // We are trying to envoke the function before it is even created 
+getName(); // We are trying to invoke the function before it is even created.
 
 // console.log(x);
 
-
-// So the getName function is envoked somehow and printed the value before its even creation 
+// ✅ So the getName function executes successfully even before its creation.
 
 
 let x = 5;
 
-function getName(){
-    console.log("Javascript")
+function getName() {
+    console.log("Javascript");
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// --------------------------------------------------------------------------------------------------------------
+//                                   Memory Creation Phase (Before Execution)
+// --------------------------------------------------------------------------------------------------------------
 
 /*
+    During the memory allocation phase, all variables and functions
+    are hoisted to the top of their scope.
 
-    Now, the memory is allocated before the execution is done right ----->> 
-
-    --->>> 
+    Example:
 
         let x = 5;
-
-        function getName(){
-            console.log("Javascript")
+        function getName() {
+            console.log("Javascript");
         }
 
         getName();
         console.log(x);
         console.log(getName);
 
+    ------------------------------------------
+    Memory Allocation (Before Execution):
 
-        //This execution will be in this case will alocate the memory before the execution right
-
-
-        x = undefined
-
-        getName() --->> contain the whole function in it 
-
+        x = <uninitialized>  // for let/const
+        getName = function() { console.log("Javascript"); }
+    ------------------------------------------
 */
 
 
-
-
-//what is the scene now 
-
+// --------------------------------------------------------------------------------------------------------------
+//                          undefined vs not defined
+// --------------------------------------------------------------------------------------------------------------
 
 /*
-
-  --->> That before the execution of the code the memory allocation occurs where the variable and functions are assigned the memory and the dummy values 
-  like --->> 
-
-  a = undefined -->> to all the variables --->>> It means that the memory is allocated but the value are not assigned 
-
-
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-                                                                            -------    undefined  vs not defined   ------
-
-
-                    --------->>>>  
-
+    "undefined"  → means the variable is declared but not assigned yet.
+    "not defined" → means the variable doesn't exist in the memory.
 */
-    // get name is not a funciton when we execute the arrow function it behave just like some other variable
-
-    console.log(getname()); // Not a function
-
-    // console.log(y); // it prints out undefined
-
-    var y = 7; 
-
-    // Now it says that it is not defined
-
-    // function getname(){
-    //     console.log("Hello");
-    // }
 
 
-    var getname = () => {
-        console.log("Hello");
-    }
+// Example: Arrow Function behaves differently (not hoisted like function declarations)
+console.log(getname()); // ❌ TypeError: getname is not a function
 
-    // so if we console.log the getName before its initialization it will give us the undefined ==== Just like it do in the variables
+// console.log(y); // ✅ Prints 'undefined' because 'var' is hoisted as undefined
 
+var y = 7;
 
-    //////////////////////////////////////////////////////////////////////////////
-
-
-    /*
-
-    Another way of writing the a funtion
-
-    */
+// If we call a variable before it's defined and it's declared with 'var' → undefined
+// But if it's not declared at all → ReferenceError: not defined
 
 
-    var getName2 = function (){
+// --------------------------------------------------------------------------------------------------------------
+//                      Arrow Function behaves like a variable (not hoisted fully)
+// --------------------------------------------------------------------------------------------------------------
+
+var getname = () => {
+    console.log("Hello");
+};
+
+// If we console.log(getName) before its initialization,
+// it will give 'undefined' just like other variables.
 
 
-    }
+// --------------------------------------------------------------------------------------------------------------
+//                      Function Expression behaves the same way
+// --------------------------------------------------------------------------------------------------------------
 
-    // The same case for this ------->>> It is also acting as a variable in which we store the function 
-    
-    // ------->>>> ' getName2 == variable === undefined '
+/*
+    Another way of writing a function is using Function Expression.
+*/
 
+var getName2 = function () {
+    console.log("Function Expression Example");
+};
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-                                                                        
+// The same case applies here:
+// During hoisting, getName2 is treated as a variable → initialized with undefined.
+// The actual function is assigned at runtime.
 
 
-
-
-
-
-
-
-
+// --------------------------------------------------------------------------------------------------------------
+// Summary:
+// --------------------------------------------------------------------------------------------------------------
+/*
+    Function Declaration → Fully hoisted (can be called before defined)
+    Function Expression → Hoisted as variable (undefined until assigned)
+    Arrow Function       → Same as Function Expression (not hoisted as a function)
+    var                  → Hoisted as undefined
+    let/const            → Hoisted but not initialized (temporal dead zone)
+*/

@@ -1,14 +1,10 @@
-// What are the closures
+// What are Closures
 
-
-function x(){
-
+function x() {
     var a = 7;
 
-    function y(){
-
+    function y() {
         console.log(a);
-
     }
 
     y();
@@ -16,245 +12,174 @@ function x(){
 
 x();
 
-
-// closure is the actually a function bundled together with its lexical environment...
+// Closure is actually a function bundled together with its lexical environment.
 
 /*
+    Function + Lexical scope === Closure
 
-    Function + Lexical scope === Closure  ----(1)
+    Function bound together with its lexical environment
 
-    Function bind together with its lexical environment ----(2)
-
-
-        For example ====>
-
-
-            
-                    function x(){
-
-                        var a = 7;
-
-                            function y(){
-
-                                console.log(a);
-
-                            }
-
-                            y();         
-                        }
-                        x();
-
-
-        [---->> Inner function ---> (y) ---->> is in its lexical environment ----->>> which is (x) ------->>>>  so it forms a closure with its lexical environment....]
-
-                                                Function + along with its lexical environment ====>> Closures
-
-                                    Thus, it forms a closure --->> and it has the access to the parent lexical scope <<-------->>
-
+    For example:
 */
 
-
-//                                                                       <===   Closures and Functions ===>
-
-
-
-    function x(){
-
+function x() {
     var a = 7;
 
-        function y(){
-
-            console.log(a);
-
-        }
-
-        y();         
+    function y() {
+        console.log(a);
     }
-    x();
 
-
-// what can be done in the functions --->>
-
- //                                                                             Functions can be assigned to a variable
-
-  function x(){
-
-    var a = function y(){
-
-            console.log(a);
-
-        }
-        y();         
-    }
-    x();
-
- //  Functions can even be passed as the parameter in the functions
-
-
-  function x(){
-
-    var a 
-        y();         
-    }
-    x(function y(){
-
-            console.log(a);
-        });
-
-//                                              <<<------- Even we can return these functions from the functions ------>>>
-
-
-// We can even return a function ---> a complete function
-
+    y();
+}
+x();
 
 /*
-        This is where the closures become difficult
+    [---->> Inner function (y) is inside its lexical environment (x)
+    so it forms a closure with its lexical environment.]
+
+    Function + along with its lexical environment ====>> Closures
+
+    Thus, it forms a closure ---> and it has the access to the parent lexical scope.
 */
 
+// ------------------------------------------------------
+// Closures and Functions
+// ------------------------------------------------------
 
- function x(){
-
+function x() {
     var a = 7;
 
-       function y(){
-
-            console.log(a);
-        }
-        
-        return y; // This is the returning of the function outside 
+    function y() {
+        console.log(a);
     }
-    var i = x(); // Now ---- this will log out the whole function 
 
-    console.log(i); // It gave the function
+    y();
+}
+x();
 
+// ------------------------------------------------------
+// Functions can be assigned to a variable
+// ------------------------------------------------------
+
+function x() {
+    var a = function y() {
+        console.log(a);
+    };
+    y();
+}
+x();
+
+// ------------------------------------------------------
+// Functions can even be passed as parameters
+// ------------------------------------------------------
+
+function x(y) {
+    var a;
+    y();
+}
+x(function y() {
+    console.log(a);
+});
+
+// ------------------------------------------------------
+// Functions can be returned from other functions
+// ------------------------------------------------------
 
 /*
-
-    So, as we envoked the function x() ===> what will happen an execution context will be created ====> and the execution context will allocate the memory and all the things will happen and the value is returned in the variable ====> and this variable will be acting as the function
-
-    ===> The x execution context will no longer be in the call stack ===> Now this function exist in the variable because we returned it 
-
-    ===> iMPORTANT
-
-        When we returned the function outside ===> it doesnot resides inside the x ====> anymore
-
-        So, now how it will behave ====> now this variable i has the function y so what is the lexical scope behaviour and all
-
-        How this (i) will now behave outside the scope ===> like outside the function scope ===> 
-            
-        
-            // For example 
-
-            now the function is residing in the i and we have a long and long program and at some point of time we called the function i
-
-
-
+    This is where closures become really interesting.
 */
 
-     
-i(); // so what will happen now ====> it printed out the value 
-
-// here are the closures 
-
-/*
-
-        ====> Functions are that much beautifull that even when they are returned ---->> from other function then they remember there lexical scope 
-        Tho ==> x don't exist or all 
-
-        ====> what we can say is that the returned value ===>> is not the function that is returned ===> It is the closure that is returned (function + lexical scope)
-
-*/ 
-
-
-
-
-
-
-function x(){
-
+function x() {
     var a = 7;
 
-        return function y(){ // it is also the same thing here ====> writing the return statement where it is declared 
-
-            console.log(a);
-        }
-        
-         
+    function y() {
+        console.log(a);
     }
-    var i = x(); 
-    console.log(i);
 
+    return y; // Returning the function
+}
 
-i();
-
-// ========================================================================================================================================================================
-
-
-function x(){
-
-    var a = 7;
-
-        function y(){ // it is also the same thing here ====> writing the return statement where it is declared 
-
-            console.log(a);
-        }
-
-        a = 100;
-        return y;
-      
-    }
-    var i = x(); 
-    console.log(i);
-
-
+var i = x(); // Logs the returned function
+console.log(i); // Function body is printed
 i();
 
 /*
+    When we invoked x(), an execution context was created.
+    The function returned `y`, and after that, the execution context of x()
+    was popped off from the call stack.
 
-In the above case ===> before returning the function i have changed the value ----> of the variable to which the inner function is returning
+    Even though x() no longer exists in the call stack,
+    the returned function still remembers its lexical scope.
+    That’s what makes closures so powerful.
 
-So what will happen??
-
-Is the value is going to change or what will happen now 
-
+    The returned value is not just a function —
+    it’s a closure (function + lexical environment).
 */
+
+// ------------------------------------------------------
+// Another example
+// ------------------------------------------------------
+
+function x() {
+    var a = 7;
+
+    return function y() {
+        console.log(a);
+    };
+}
+
+var i = x();
+console.log(i);
+i();
+
+// ------------------------------------------------------
+// Modifying variables before returning
+// ------------------------------------------------------
+
+function x() {
+    var a = 7;
+
+    function y() {
+        console.log(a);
+    }
+
+    a = 100; // Updated before returning
+    return y;
+}
+
+var i = x();
+console.log(i);
+i();
 
 /*
- This is where we need to understand that the variable inside the function ====> is actually the referance to the memory location
-
- and is preserved when the value returns so the referance is the same value can change tho
-
-
+    In this case, the variable `a` is updated before returning the function.
+    Since closures preserve references (not values), the updated value will be printed.
 */
 
-// output will be updated adn this is how closure preserve things
+// ------------------------------------------------------
+// Deeply nested closure example
+// ------------------------------------------------------
 
-
-// Now let make it go deep down more
-
-
-
-function c(){
-
+function c() {
     var b = 600;
 
-    function x(){
+    function x() {
+        var a = 7;
 
-    var a = 7;
-
-        function y(){ 
-
+        function y() {
             console.log(a, b);
         }
 
         y();
-      
     }
+
     x();
 }
 
 c();
 
-// This is also the closure where the inner function will try to access the variable in the lexical parent and the then also the lexical scope of the outer parent
-
-
+/*
+    In this example:
+    The inner function `y` can access both `a` (from x) and `b` (from c),
+    showing that closures can extend across multiple lexical scopes.
+*/

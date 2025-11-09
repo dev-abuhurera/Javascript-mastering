@@ -1,105 +1,106 @@
-// What is the difference between the (((Function statement))) and (((Function expression)))
+// What is the difference between the (((Function Statement))) and (((Function Expression)))
 
+// ------------------------------------------------------
+//                       ---> Hoisting <---
+// ------------------------------------------------------
 
-//                       ---> Hoisting <--- 
-
-// a(); // "So this is the Hoisting <---> in memory creation phase the value is assigned"  
-// b(); // And the b will work as the ---> variable ---> assigned undefined ---> and when that code line hits the variable is then assigned the value 
-
-// then as the b is undefined the value is error
-
-
-// What is a function statement and Function declaration <=====>
-
-    function a(){
-
-       console.log("Function Statement");
-
-    }
-
-// Function expression <======>
-
-// functions act as a value like we initialized the variable with the value 
-
-    var b = function (){
-
-        console.log("Function Expression");
-
-    }
-
-
-// Anonymous function 
-
-// function (){ // It is an error --> it is anonynous
-
-// }
-
-// function can't be expressed without name in there declaration but they are acting as the values when are assigned in the variable they act as the value 
-
-
-// Named function expression
+// a(); // ✅ Works fine - due to hoisting
+// b(); // ❌ Error - b is not a function (undefined at this point)
 
 /*
-
-    what is the named fx expression
-
-    -----> Named Function expression are those expressions that are assigned to the variable with the name assigned to the function
-
-
+    During the Memory Creation Phase:
+    - Function declarations (statements) are hoisted with their full definition.
+    - Function expressions are treated like variables → initialized with 'undefined'.
 */
 
-var c = function drive(){
-    console.log(drive);
-} // This is the named function expression
+// ------------------------------------------------------
+// Function Statement (aka Function Declaration)
+// ------------------------------------------------------
 
+function a() {
+    console.log("Function Statement");
+}
 
-c();
+// ------------------------------------------------------
+// Function Expression
+// ------------------------------------------------------
 
-// what if i do something like this ----->
+// Functions can act as values (assigned to variables)
+var b = function () {
+    console.log("Function Expression");
+};
 
-drive(); 
+// ------------------------------------------------------
+// Anonymous Function
+// ------------------------------------------------------
 
-// This is the referance error like ______ it is because the fn is defined in the local scope not in the global scope.
+// ❌ Invalid: function () { } 
+// Function declarations must have a name.
+// Anonymous functions are only valid when used as values, for example:
+var anon = function () {
+    console.log("Anonymous Function assigned to a variable");
+};
 
-// So, it is accessable globally like this 
-
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-// First Class Functions
+// ------------------------------------------------------
+// Named Function Expression
+// ------------------------------------------------------
 
 /*
-
-Functions can be assigned as the arguments -----> 
-
-we can even return a fn from a fn
-
-The ability to be used the function ----> as the value , arguments, return etc
-
+    Named Function Expressions are function expressions
+    where the function itself has an internal name.
 */
 
-    
+var c = function drive() {
+    console.log(drive); // drive refers to itself (local to this function)
+};
 
+c();      // ✅ Works fine
+drive();  // ❌ ReferenceError - not accessible globally
 
-    var bc = function (param1, param2){
-        console.log("hello");
-        return function(){
-            console.log("Function is gonna get us back in return")
-        }
-    }
+/*
+    Explanation:
+    The function 'drive' is defined inside the local scope of 'c'.
+    It cannot be accessed outside its expression.
+*/
 
-    function xyz2(){
+// ------------------------------------------------------
+// First-Class Functions
+// ------------------------------------------------------
 
-    }
+/*
+    Functions in JavaScript are First-Class Citizens.
 
-    bc(function (){
-        console.log("fn is returned")
-    }, xyz2); // this is completely valid we can pass anonymous fn as the argumenets in fn
+    Meaning:
+    - Functions can be passed as arguments.
+    - Functions can be returned from other functions.
+    - Functions can be assigned to variables.
 
+    In short, functions can behave just like any other value.
+*/
 
+var bc = function (param1, param2) {
+    console.log("Hello");
 
+    return function () {
+        console.log("Function is gonna get us back in return");
+    };
+};
+
+function xyz2() {
+    console.log("I am xyz2");
+}
+
+// Passing functions as arguments
+bc(
+    function () {
+        console.log("Anonymous function passed as an argument");
+    },
+    xyz2
+);
+
+// ------------------------------------------------------
 // Arrow Functions
-// --------------------- will be covering sooner 
+// ------------------------------------------------------
 
-
+// Will be covered later...
+// Arrow functions are a shorter way to write function expressions.

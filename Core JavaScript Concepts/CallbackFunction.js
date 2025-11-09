@@ -1,100 +1,163 @@
-// what is a callback function
+// =======================================================
+// 🔁 CALLBACK FUNCTIONS IN JAVASCRIPT
+// =======================================================
 
 /*
+    📘 Definition:
+    A callback function is a function that is passed 
+    as an argument to another function.
 
-    A function that is passed into another function is a callback function...
-
-    callback functions give us the access to the whole asynchronous world in the Javascript (A synchronous Single---threaded Language) ---> It can do one thing at a time in a specific order
-
+    Callback functions give JavaScript access 
+    to the asynchronous world — despite being 
+    a synchronous, single-threaded language.
 */
-
 
 setTimeout(function () {
     console.log("Timer");
-}, 5000); // As we know that the settimeout <===> The callback function is not executed here <===> It mean's that the settimeout will not wait here to be expired === this is where the callback fn gives the asynchronous nature 
-
-
-function x(y){
-    console.log("X");
-    y(); // Now the function is called here 
-}
-
-x(function y(){ // This fn Y is the callback fn
-    console.log("y");
-});
-
-// Now as the function Y is not called here ----> it will be called some how later in the code ----> thats why it is called as the callback function
-
-
-// ---------------------------------------------------------- Now let's see what will happen in the call stack ----------------------------------------------------------
+}, 5000);
 
 /*
+    🧠 Explanation:
+    - setTimeout() receives a callback function.
+    - The callback is NOT executed immediately.
+    - JS continues execution without waiting.
+    - After the delay expires, the callback is executed asynchronously.
 
-    There is something a lot magical happened in the call stack ---->> First the function --- x executes and come to the call stack log the values and then get vanished from the callstack and after the 5 mili-seconds the callStack have again the execution context of the setTimeout function and thus value will be logged at the console
-
-    --->
-     
-    Js has only one main thread --- (The callstack and everything that is done is done through it)
-
-    --->
-
-
-    So.... As everything is done through this call stack thus anything that block this call stack it is ------>>BLOCKING THIS MAIN THREAD<<------
-
-    we should never block this main thread......
-
----->> Like if some of the function in js takes time -----> The js will not be able to execute anyother operation because it has only one callstack and that's why it is said that we should use the ------- async ------ operations <===> for the things that take time 
-
-// AAAAAAAHHHHHHHH -----> 
-
-    So if the js doesnot had the callback functions and if it is not able to pass the function into another funcitons the first class functions ---- we were not be able to perform this async operations
-
+    👉 This behavior introduces the asynchronous nature of JS.
 */
 
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// Event handler in js
+// =======================================================
+// 🧩 SIMPLE CALLBACK EXAMPLE
+// =======================================================
 
-document.getElementById("click").addEventListener("click", function xyz (){ // this function is called as the handler
+function x(y) {
+    console.log("X");
+    y(); // Function Y is called here
+}
 
-    // This is the callback function ----- So what will happen in this the event listen will attach the callback function to the button and then execute the function when the event occur....
-    // It basically push the function into the callstack....
-
-    console.log("Button Clicked!!!");
-
+x(function y() { // Function Y is passed as a callback
+    console.log("Y");
 });
 
+/*
+    🔍 Explanation:
+    - Function 'y' is passed as an argument to 'x'.
+    - It is not executed immediately when passed.
+    - It is executed later inside 'x' → hence the name "callback function".
+*/
 
 
-// closure example
+// =======================================================
+// 🧠 CALL STACK BEHAVIOR
+// =======================================================
 
-function addedEventlistner(){
+/*
+    Here’s what happens step-by-step:
+
+    1️⃣ The function `x` is invoked → added to the Call Stack.
+    2️⃣ It logs "X", then calls `y()`.
+    3️⃣ Function `y` is added to the Call Stack → logs "Y".
+    4️⃣ Both are removed after execution (stack becomes empty).
+
+    Meanwhile:
+    - The setTimeout() callback waits in the Web API environment.
+    - After 5 seconds, its callback moves to the Callback Queue.
+    - Event Loop checks when the Call Stack is empty.
+    - Then pushes the callback to execute "Timer".
+*/
+
+/*
+    ⚙️ JS has only ONE main thread (Call Stack).
+    - Anything that blocks this thread stops all other operations.
+    - That’s why long-running or time-consuming tasks should be
+      handled asynchronously (e.g., via callbacks, promises, async/await).
+*/
+
+/*
+    💡 Without callback functions (and first-class functions),
+       JavaScript wouldn’t be able to perform asynchronous operations.
+*/
+
+
+// =======================================================
+// 🖱️ EVENT HANDLERS (Callback Functions in Action)
+// =======================================================
+
+document.getElementById("click").addEventListener("click", function xyz() {
+    // This function is the event handler (callback function).
+    // It will be executed only when the event occurs.
+    console.log("Button Clicked!!!");
+});
+
+/*
+    🧠 Explanation:
+    - The `addEventListener` attaches the callback to the button.
+    - When the button is clicked → the callback is pushed to the Call Stack.
+*/
+
+
+// =======================================================
+// 🔒 CALLBACK + CLOSURE EXAMPLE
+// =======================================================
+
+function addedEventListener() {
     let count = 0;
 
-    document.getElementById("click").addEventListener("click", function fn(){
-        console.log("button is clicked", ++count);
-    })
+    document.getElementById("click").addEventListener("click", function fn() {
+        console.log("Button clicked", ++count);
+    });
 }
 
-addedEventlistner();
-
-// What is the scope of this event handler call back function -----> it is this function + its lexical environment ----> so it is that closure -----> and then the global environment === total scope of this function
-
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+addedEventListener();
 
 /*
-    Garbage Collection + RemoveEvent Listner
+    🧠 Explanation:
+    - Each time the button is clicked, the inner function executes.
+    - It has access to `count` because of closure.
+    - The scope of the callback function:
+        → Its own function scope
+        → Its lexical environment (outer function)
+        → Global scope
+    - Together, these form the closure.
 */
 
 
-// Why we need to remove the event listener so it is basically because of the heaviness of the Event Listener -----> Because event listeners create closures ----- and even if the callstack is empty like nothing execute memory has the closures so good practice ---- remove this eventlistenere and it is then garbage collected
+// =======================================================
+// 🧹 GARBAGE COLLECTION & REMOVE EVENT LISTENERS
+// =======================================================
+
+/*
+    ⚠️ Why remove event listeners?
+
+    - Event listeners create closures.
+    - Even if nothing executes, the closures still hold memory.
+    - Over time, unused listeners can cause memory leaks.
+    - To free up memory, it’s a good practice to remove
+      event listeners when they’re no longer needed.
+*/
+
+// Example:
+
+function removeHandler() {
+    const btn = document.getElementById("click");
+    const handler = () => console.log("Clicked!");
+    
+    btn.addEventListener("click", handler);
+
+    // Later...
+    btn.removeEventListener("click", handler);
+    // ✅ Now garbage collector can free the memory.
+}
 
 
-
-
-
-
-
-
-
+// =======================================================
+// 🪜 SUMMARY
+// =======================================================
+//
+// 1️⃣ A callback is a function passed into another function.
+// 2️⃣ Enables asynchronous behavior in JS.
+// 3️⃣ Common examples: setTimeout, event handlers, fetch, etc.
+// 4️⃣ Blocking the main thread should always be avoided.
+// 5️⃣ Callbacks can form closures, so removing listeners helps memory cleanup.
+// =======================================================
