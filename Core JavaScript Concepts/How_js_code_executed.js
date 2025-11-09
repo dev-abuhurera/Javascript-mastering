@@ -1,49 +1,98 @@
-// How js works and Code Executes
+// --------------------------------------------------------------------------------------------------------------
+//                             How JavaScript Works and How Code Executes
+// --------------------------------------------------------------------------------------------------------------
+
 /*
-// --------------------------------------------------
- ---> Is javascript synchronous or asynchronous
- ---> Is javascript Single threaded or multi threaded
-// --------------------------------------------------
+    --------------------------------------------------
+     → Is JavaScript synchronous or asynchronous?
+     → Is JavaScript single-threaded or multi-threaded?
+    --------------------------------------------------
+*/
 
+// --------------------------------------------------------------------------------------------------------------
+// Fundamental Concept:
+// --------------------------------------------------------------------------------------------------------------
 
-Fundamental:-
+/*
+    Everything that happens inside JavaScript executes within an
+    "Execution Context".
+*/
 
--->>> 
+// --------------------------------------------------------------------------------------------------------------
+//                                       [[[[[[[[ Execution Context ]]]]]]]]
+// --------------------------------------------------------------------------------------------------------------
 
--> Everything happens inside the javascript in the ((execution Context))
+/*
+    The Execution Context is made up of two main components:
 
+    1️⃣ Memory (Variable Environment)
+    2️⃣ Code (Thread of Execution)
+*/
 
------>>>>>                                                          [[[[[[[[[Execution Context]]]]]]]]
+// --------------------------------------------------------------------------------------------------------------
+// Memory (Variable Environment)
+// --------------------------------------------------------------------------------------------------------------
 
+/*
+    - This is where all variables and functions are stored as key-value pairs.
 
-- Compromise of the 2 components in it 
+        Example:
+            a = 10;   --->   (a : 10)
 
+    - Every variable or function you declare gets allocated memory here
+      during the "Memory Creation Phase".
+*/
 
---->>                                  Memory (variable environment)              ||               Code (Thread of Execution)
+// --------------------------------------------------------------------------------------------------------------
+// Code (Thread of Execution)
+// --------------------------------------------------------------------------------------------------------------
 
-                            All the variable and functions are existed here in the             Code part is where whole code is executed as a thread in the 
-                                                                                                line by line form.
-                            for of key value pairs
+/*
+    - This is the place where the code is executed line by line.
 
-                            - a = 10; --->>> (a : 10)
-                                
-                            _________________________________________________________________________________________________________________________________
+    - The thread of execution runs your code sequentially,
+      executing one statement at a time in order.
+*/
 
+// --------------------------------------------------------------------------------------------------------------
+// Summary:
+// --------------------------------------------------------------------------------------------------------------
 
+/*
+    JavaScript is a **Synchronous**, **Single-Threaded** Language.
 
------------>>>>                     Javasctipt is the synchronous single threaded language
+    1️⃣ Synchronous → Executes code one line at a time in a specific order.
+    2️⃣ Single-Threaded → Has only one main thread (Call Stack)
+        → meaning it can execute only one task at a time.
 
-1. Synchronous  2. Single threaded Language
+    Therefore:
+        JavaScript executes code line by line,
+        and the next line only runs after the previous one completes.
+*/
 
+// --------------------------------------------------------------------------------------------------------------
+// Visual Representation (Conceptual)
+// --------------------------------------------------------------------------------------------------------------
 
---->>>>                         So, | synchronous || single threaded | ---->>>>> Javascipt code is executed only one line at a time and in a particular order where one line is executed after the second one completes.
+/*
+    Execution Context
+    ┌──────────────────────────────────────┐
+    │          Memory (Variables)          │
+    │  a : 10                              │
+    │  b : 20                              │
+    │  function add() {...}                │
+    ├──────────────────────────────────────┤
+    │         Code (Execution Thread)      │
+    │  Line 1 → Line 2 → Line 3 ...        │
+    └──────────────────────────────────────┘
+*/
 
-                                                    ________________________________________________________________________
+// --------------------------------------------------------------------------------------------------------------
+// In short:
+// --------------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
+/*
+    🧠 Everything in JS runs inside an Execution Context.
+    ⚙️ Code executes one line at a time (synchronously).
+    🧵 JavaScript uses a single main thread to handle execution.
 */
