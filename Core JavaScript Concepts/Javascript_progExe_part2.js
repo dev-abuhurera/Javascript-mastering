@@ -1,77 +1,85 @@
-// Execution context in Javascript
+// Execution Context in JavaScript
 
 
 /*
 
-    -> When we run a js program a [[[[[[Global Execution Context]]]]]] is created
+    --->> When we run a JavaScript program, a [[[[[[ Global Execution Context ]]]]]] is created.
 
 
-    Two phases of Execution context--->>
+    ---------------------------------------------------------------
+                    Two Phases of the Execution Context
+    ---------------------------------------------------------------
 
-        -->First is the memory creation phase
+        1️⃣  Memory Creation Phase
+        2️⃣  Code Execution Phase
+
 
   //////////////////////////////////////////
 
-        code:-
+        Code Example 👇
 
         n = 2;
 
-        function square(num){
+        function square(num) {
 
             var ans = num * num;
             return ans;
-        
         }
-        
+
         var square2 = square(n);
         var square4 = square(4);
 
   //////////////////////////////////////////
 
-        memory              |||||||||         code
 
---->>   n : undefined           |   --> n : 2 (execution of the code)   
+                        Memory                      |||||||||                   Code Execution
 
-        square: {               |   -->> functions are not executed until invoked
+--->>   n : undefined                               |       --->> n : 2   (Value assigned during execution)
 
-        `whole function code 
-         is here`               |   ---->>>  Function --->  invoke 
+        square : {                                 |       --->> Functions are not executed until invoked
+            `Whole function code is stored here`   |
+        }                                          |       --->> Function Invocation occurs
 
-        }                       |   {They are like the mini programs and are invoked when the function is executed}
+        square2 : undefined                        |       --->> Function call creates a **new Execution Context**
 
-        square2: undefined      |   -> So, function invokation will Create a new execution context
-                                        -------------------------------------------------------------------------------
-        square4: undefined      |       ---->>>>>          memory                   ||||                code
-
-        |||Memory allocation|||                    memory allocation occur for        |         n : 2
-                                                   the variable and the funtions      |
-                                                   in this location....               |
-                                                                                                ans : 4
-
-                                                   num : undefined                    |         return --> returns the control where the function was Envoked 
-
-                                                   ans : undefined                    |
+        square4 : undefined                        |               ---------------------------------------------------
+                                                   |               ---->>>>>         Memory                ||||     Code
+                                                   |               
+                                                   |       memory allocation for        |     num : 2
+                                                   |       variables & functions        |
+                                                   |                                    |     ans : 4
+                                                   |                                    |     
+                                                   |       num : undefined              |     return ---> returns control
+                                                   |       ans : undefined              |                  to the caller
 
 
+---------------------------------------------------------------------------------------------------------------------------
 
-    ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    ----->>> When a function finishes execution, its Execution Context 
+             is completely deleted from memory.
 
-    ------>>>  When the whole function will be executed will be completely deleted and when the whole code is executed then the whole execution context will be finished
+    ----->>> When the entire code completes, the Global Execution Context
+             is also removed.
+---------------------------------------------------------------------------------------------------------------------------
 
 */
+
 
 
 /*            
 
-
                                                                                                 [[[[[[[[ Call Stack ]]]]]]]]
 
---------->>> Call stack is to manage the exection contexts ----->> Main Execution context exit in the stack and whenever a new funciton is invoked a new exection context is created and thus the Stack Execution will be created inside the call stack and when the program is finished the whole execution stack is removed from the memory
+--------->>> The **Call Stack** manages all Execution Contexts.
 
-                                                                            -- Call Stack also maintain the order of execution of the execution context
+            🧠  The Global Execution Context sits at the base of the stack.
+            🧩  Whenever a new function is invoked, a new Execution Context 
+                 is created and pushed into the stack.
 
+            🔁  Once the function finishes execution, its Execution Context 
+                 is popped out from the stack.
 
+            ⚙️  The Call Stack maintains the order of execution 
+                 of all Execution Contexts throughout the program.
 
 */
-
-

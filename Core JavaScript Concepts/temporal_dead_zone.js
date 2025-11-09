@@ -1,162 +1,72 @@
-// Some important Questions:-
-
-
-/* 
-
---->>  What is temporal dead Zone ?
---->>  Are the let and const declarations hoisted in js ?
---->>  Difference between the syntax error, referance error and type error ?
-
-
-
-    -------->>>>   Fundamental:-     
-
-        1. Let and const declarations are hoisted in Javascript but its hoisting is completely different from the hoisting of the 'Var' declarations
-
-        2. Let and const ---> are in the temporal dead zone for the time being
-
-        But, 
-
-        What is temporal dead zone???
-
-
-*/
-
-            console.log(b); // Gave 'undefined' due to hoisting 
-            // console.log(a); // This will give us error
-            let a = 10;
-            console.log(a); // Now it is accessable 
-            var b = 100;
-
-
-/*
-
-    This is the main thing that we have to understand like why is logging the variable declared with let are giving error 
-
-    Are they hoisted or not ????
-
-    let find out ---->>> in the dev console 
-
-*/
-
-
-/*
-
-    ---> This is what happens here ---(1)
-
-        - When a variable is declared with var ---> it is assigned memory (hoisted) before execution ---> but it exist in the Global memory space and is accessable in the global memory environment 
-        
-        - In case of the let and const ---> they are also assigned memroy (hoisted) before the execution ---> but it don't exist in the Global memory space while it exists in the ---Script--- session ---- that is during the temporal dead zone and is not accessable until and unless it is not initiziled by some value 
-
-                                                                                                                          --- Temporal dead Zone ---
-
-        --->> Temporal dead zone is the time from the (hoisting) - allocation of memory --> of the let and const variables to the time the values are assigned to it. This is the temporal dead zone.
-
-                                                           Temporal dead zone ---> phase ---> hoisted ---> to ---> point where the values are put inside. 
-
-*/
-
-
-// Referance error in our program ------>>
-
-// console.log(window.b);
-
-
-// window === this === Global object --->> and let is not attached to the window object ----->>> meaninig not existing in the global space 
-
+// Some Important Questions and Concepts
 
 /* 
+    --->> What is Temporal Dead Zone (TDZ)?
+    --->> Are let and const declarations hoisted in JS?
+    --->> Difference between SyntaxError, ReferenceError, and TypeError?
 
+    Fundamental:
 
-                we can't also be able to redeclarationg of let sames goes with the var and it is a 'Syntax error'
-                
-
+    1. Let and const declarations are hoisted in JavaScript, but their hoisting is different from var.
+    2. Let and const exist in the Temporal Dead Zone (TDZ) until they are initialized.
 */
 
+// Example: Temporal Dead Zone
 
-//                                          So, you can't redeclare the same name in the same scope 
-
-
-
-                    // let x = 10;
-
-                    // var x = 20;
+console.log(b); // Outputs: undefined (var hoisting)
+ // console.log(a); // ReferenceError: Cannot access 'a' before initialization
+let a = 10;
+console.log(a); // Now accessible
+var b = 100;
 
 /*
 
+Explanation:
 
-                                                            In the case of var it is completely lineant
-
-
-*/
-
-
-
-    var r = 10;
-
-                                                // So in the case of var the redeclaration of the variable with the same name is not an error - 
-
-    var r = 100;
-
-
-
-    console.log(r);
-
-
-    // It means var is able to redeclare within same scope 
-
-
-/*
-
-
-    let me show you the concept of const now
+- Variables declared with var are hoisted and initialized to undefined.
+- Variables declared with let and const are hoisted but not initialized.
+- TDZ: Time from hoisting to initialization of let/const variables.
+- Accessing them in TDZ throws a ReferenceError.
 
 */
 
+// ReferenceError Example
+// console.log(window.b); // window.b exists for var, but let/const are not attached to the global object
 
-    let q; // let variables can be declared without initialization and then initialized later on
+// SyntaxError Example: Redeclaration in the same scope
+// let x = 10;
+// var x = 20; // SyntaxError
 
-    q = 1000;
+// Var redeclaration allowed
+var r = 10;
+var r = 100;
+console.log(r); // 100
 
-    console.log(q); // It will be giving us 1000
+// Let variables can be declared and initialized later
+let q;
+q = 1000;
+console.log(q); // 1000
 
-    // const w; // It is a syntax error ---->> Missing initialization for const declaration
+// Const must be initialized at declaration
+// const w; // SyntaxError: Missing initializer
+const w = 1000;
+console.log(w);
 
-    // w = 1000;
+// Reassigning const throws TypeError
+// w = 2000; // TypeError: Assignment to constant variable
 
-    // console.log(w);
-    
+/* Error Summary:
 
-    const w = 1000; 
-    console.log(w);
+- ReferenceError: Accessing a variable that does not exist or is in TDZ
+- SyntaxError: Violates JS syntax rules (e.g., redeclaration of let in same scope)
+- TypeError: Invalid operation on a variable type (e.g., reassigning const)
 
+*/
 
-    w = 2000; // This is called as the type error. 
+/* Best Practices:
 
-    console.log(w);
+1. Prefer const for variables that should not change.
+2. Use let for variables that will change.
+3. Declare and initialize variables at the top of the scope to avoid TDZ issues.
 
-
-    //referance error is when the js engine try to access something that is not present.
-    //syntax error when the js engine encounter something that is not in the syntax rules.
-    //type error when a specific typed variable (const not initialized at the time of decaleration).
-
-
-//          what should we have to use ----<<<>>>----- USE CONST ---(1) and now ----<<<>>>---- USE LET ---(2)
-
-
-
-// The best way to avoid the temporal dead zone is to put all the declarations and initizations on the top ---> of the scope so that the time between the declaration of the code and initialization of the variable is minimun and we get the variable access at that point 
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
+*/

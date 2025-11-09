@@ -1,8 +1,7 @@
 // Lexical Environment 
 
 
-
-function a(){
+function a() {
     console.log(b);
 }
 
@@ -13,25 +12,25 @@ a();
 
 /*
 
-The function a has a local execution context where the b don;t exists but till at that point due to the global execution context the b is defined there the function is accessing it from the global execution context 
+    The function `a` has a local execution context where `b` doesn't exist locally,
+    but due to the global execution context, `b` is accessible.  
 
-            ------>>>>> HOW ??????????????????????????????????????????????????????????
+    ------>>>>> HOW ??????????????????????????????????????????????????????????
 
-        Now --->> Lets make this a bit more complicated 
+    Let's make this a bit more complicated:
 
 */
 
 
-function c(){
+function c() {
 
     e();
     
-    function e(){
-        
+    function e() {
         console.log(d);
     }
-}
 
+}
 
 d = 100;
 
@@ -40,138 +39,103 @@ c();
 
 /*
 
-                            --->>>                           ''So what will happen inside this now''
+    --->>> What will happen here now?
 
+    If we have a function inside another function, what gets printed?
 
-                                    Now i want to make this complex that what if i have a function inside the function then what is gonna be printed 
-
-
-
-                                            And here it goes --->> Again the output is shown at the console screen......
-
-
-
-                                                Now let me show you the whole concepts here ----->>>>
+    Again, the output is shown on the console, and here's why:
 
 */
 
 
+function t() {
 
-
-function t(){
-
-    g = 100; // Now we have added the function defination inside the function itself so now what will gonna happen
-
+    g = 100; // Variable inside function
 
     o();
     
-    function o(){
-        
+    function o() {
         console.log(g);
     }
 }
 
-
-
 t();
 
-// Even now as the variable declaration inside the local execution context so now it is the concept in which the variable is again accessable 
+// Even now, the variable is accessible inside the local execution context
+// demonstrating the concept of lexical access
 
 
-function w(){
+function w() {
 
-    q = 100; // Now we have added the function defination inside the function itself so now what will gonna happen
-
+    q = 100; // Local variable
 
     r();
     
-    function r(){
-        
-        
+    function r() {
+        // Nested function
     }
 }
 
-console.log(q); // Now what if we try to access the variable in the global scope while it is in the local scope
-
+console.log(q); // Accessing variable in global scope while it's local
 w();
 
-
-// Now the variable q is not define ----------------------------------------------------------------------------------------------------------
-
+// Now `q` is not defined globally ----------------------------------------------------------------------------
 
 
 /*
 
 
-                                                                What is the scope ?????
+                                                                What is Scope?
 
-                ---------------------------  Scope is some where we access a Specific Variable and Function  ----------------------((((1))))                                                
-
-
-                                      ----->> 'SCOPE IS DIRECTLY DEPENDANT ON THE LEXICAL ENVIRONMENT' <<-----
-
-
-    
-        1. Lexical means in heriarchyyy --------(1)
+        ---------------------------  
+        Scope is where we can access a specific variable or function
+        ---------------------------  ((((1))))                                                
 
 
-       ---->> Lexical ------>>> in heriarchy with parents 
+        ----->> 'Scope is directly dependent on the Lexical Environment' <<-----
 
 
-       Like when an execution context is created it has a referance to its parent memory --->> So it is the lexical to its parent memory
+        1️⃣ Lexical means "in hierarchy"  
+
+       ---->> Lexical ---> in hierarchy with parents
 
 
-    
-    for eg:-
+       When an execution context is created, it has a reference to its parent memory
+       --->> This is its lexical parent.
 
 
-    function w(){
+    Example:
 
-            q = 100;
+    function w() {
 
+        q = 100;
 
-            r();
-            
-            function r(){
-                
-            }
+        r();
+        
+        function r() {
+            // Nested function
+        }
 
+        ----->>> The function `r` is inside `w` 
+                --->>> `r` is lexical to `w` (it exists in `w`’s memory space)
 
+        ----->> If we try to log a variable inside `r`, JS engine first checks `r`’s memory
+                (Lexical Environment).  
 
-    ----->>> Now the function 'r' --->> It is inside the function 'w' ----->>> So it can be said that the (((r))) is lexical to (((w))) right.......
+        ----->> If the variable is not there, it looks up the **lexical parent** (`w`’s memory)
 
-
-
-
-
-                    It means it exist in the memory space of this function 
-
-
-                    So, when if i try t0 --->> Log out the value of variable in the function --->>> js engine check the memory space of the LEC of the funciton ---->> If it don't get this in it ----->> the execution context will be moving to the lexical parent where the fuction existed
-
-
-                    Then, the Global Execution Context ---->> And then if the variable is not there --->>> It will be moving to the Null
-
-                
-                    (  Then it will say that the variable is not defined  )
-
-
+        ----->> Then the **Global Execution Context**, and if not found, it moves to `null`
+                --->> JS will throw `ReferenceError: variable is not defined` if not found anywhere.
 
                                                                                 [[[[[[[[SCOPE CHAINING]]]]]]]
 
-                                                                            The chain of the lexical environment 
+        The chain of lexical environments determines variable accessibility.
 
+        '''  Lexical Environment = local memory + lexical parent '''
 
-                                                            '''  Lexical Environment is the local memory + lexical Parent   '''
-                                                            
     }
 
-    console.log(q); 
-
+    console.log(q); // Error if variable is not in global scope
     w();
 
 */
-
-
-
-

@@ -1,25 +1,22 @@
-// Javascript is a loosly typed language --->> it means it assign and detect the datatypes of the variables by themselve
-
+// JavaScript is a loosely typed language
+// ---> It means JS assigns and detects the data types of variables automatically
 
 var a;
 
-console.log(a);
+console.log(a); // undefined
 
-
-if(a === undefined){
-    console.log("a is undefined")
-}
-else{
-    console.log("a is not undefined")
+if (a === undefined) {
+    console.log("a is undefined");
+} else {
+    console.log("a is not undefined");
 }
 
+// Hoisting example
+console.log(x); // undefined, because var is hoisted
 
-console.log(x)
+var x;
 
-var x; 
-
-x = 10
-x = "Hello js"
-
+x = 10;           // x is now a number
+x = "Hello js";   // x is now a string, type changed dynamically
 
 /////////////////////////////////////////////////////////////////////////////////

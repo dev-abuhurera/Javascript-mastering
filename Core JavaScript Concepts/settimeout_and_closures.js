@@ -1,89 +1,89 @@
-// Settimeout and closures
+// SetTimeout and Closures
 
+// Example 1: Simple setTimeout with closure
 
 // function x(){
-
 //     var i = 1;
 //     setTimeout(() => {
-//         console.log(i);
-//     }, 3000); // So after 3 sec the code will execute
-
+//         console.log(i); // Will execute after 3 seconds
+//     }, 3000);
 // }
 
 // x();
 
 
-// Second thing -------------------------->>>
-
-
+// Example 2: setTimeout with additional console.log
 
 // function x(){
-
 //     var i = 1;
 //     setTimeout(() => {
-//         console.log(i);
-//     }, 3000); // So after 3 sec the code will execute
+//         console.log(i); // Executes after 3 seconds
+//     }, 3000);
 
-//     console.log("Namaste Javascript!!!") // Now what will happen ????
+//     console.log("Namaste Javascript!!!"); // Executes immediately
 // }
 
-// // Ah it printed first and then waited for about 3 sec and then executed the function
-
 // x();
-
-// `What happened was that first the ---> Print statement executed First even before the [settimeout] ----> Like the behaviour is odd ----> 'First of all ====> why the code execute the code line didn't ran.`
 
 /*
 
-    Now what is happening ----> The settimeout callback function created a closure ----> it means the function and the lexical scope so the function have the referance to the outer variable right
+    What happened here:
 
-    // ok so what will happen ---->> Javascript take the Callback Function <===> attaches a timer and then store it at side and then proceed <===> so basically javascript keeps procedding and keep performing it's functionality 
+    - The `setTimeout` callback creates a closure. This closure remembers
+      the lexical scope, so it has a reference to the outer variable `i`.
     
+    - Javascript attaches the callback function to the timer, stores it aside,
+      and continues executing the rest of the code. That’s why the console.log
+      outside the `setTimeout` executes first.
 
 */
 
 
-// function x(){
+// Example 3: setTimeout inside a loop with var
 
+// function x(){
 //     for(var i = 1; i <= 5; i++){
 //         setTimeout(() => {
-//         console.log(i);
-//     }, i * 1000);
-    
+//             console.log(i); // Will print 6 for all after each second
+//         }, i * 1000);
 //     }
-//     console.log("We Gonna Print the value of ----(i)---- after every second....")
+//     console.log("We gonna print the value of i after every second...");
 // }
 
 // x();
 
+/*
 
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    Explanation:
+
+    - The loop pushes the callback functions to the event queue.
+    - Since `var` is function scoped, the same `i` is shared across all iterations.
+    - By the time the timers fire, the loop has finished and `i = 6`, so every callback prints 6.
+    - Closure preserves reference to the outer variable, not its value at the time of creation.
+
+*/
 
 
-// .......Ahhhh, What Will happen First of all the loop iteration will push the function to the side so what will happen <===> the function attaches the timer to the function move the function to the side and then completes the iterating and making the copies and as the clousre was formed the value of i at the referance is changed so then the js will move on and print the value and when the timer expires it will run the functions........
+// Example 4: Using let for block scope
 
-
-
-
-// Now ---> if i use the let ---> let has the block scope right so what will happen now 
-
-
-
-function x(){
-
+function x() {
     for(let i = 1; i <= 5; i++){
         setTimeout(() => {
-        console.log(i);
-    }, i * 1000);
-    
+            console.log(i); // Prints 1, 2, 3, 4, 5 correctly
+        }, i * 1000);
     }
 
-    console.log("We Gonna Print the value of ----(i)---- after every second....")
+    console.log("We gonna print the value of i after every second...");
 }
 
 x();
 
+/*
 
+    Explanation:
 
-
- 
+    - `let` is block scoped, so each iteration creates a new `i` inside its own block.
+    - The closure now remembers a separate copy of `i` for each callback.
+    - This prints 1, 2, 3, 4, 5 at intervals of 1 second each.
+    
+*/
