@@ -35,8 +35,10 @@ var b = function () {
 // ------------------------------------------------------
 
 // ❌ Invalid: function () { } 
+
 // Function declarations must have a name.
 // Anonymous functions are only valid when used as values, for example:
+
 var anon = function () {
     console.log("Anonymous Function assigned to a variable");
 };
@@ -59,8 +61,10 @@ drive();  // ❌ ReferenceError - not accessible globally
 
 /*
     Explanation:
+
     The function 'drive' is defined inside the local scope of 'c'.
     It cannot be accessed outside its expression.
+    
 */
 
 // ------------------------------------------------------
@@ -79,15 +83,20 @@ drive();  // ❌ ReferenceError - not accessible globally
 */
 
 var bc = function (param1, param2) {
+
     console.log("Hello");
 
     return function () {
+
         console.log("Function is gonna get us back in return");
+
     };
 };
 
 function xyz2() {
+
     console.log("I am xyz2");
+    
 }
 
 // Passing functions as arguments
