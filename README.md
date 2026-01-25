@@ -1,4 +1,4 @@
-# Mastering JavaScript — The Deep Dive
+# Mastering JavaScript 
 
 <div align="center">
 
@@ -10,7 +10,6 @@
 [![Status](https://img.shields.io/badge/Status-In%20Progress-0077B6?style=for-the-badge)](https://github.com)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-_A personal journey through JavaScript's core mechanics — from execution context to async patterns._
 
 [📚 Core Concepts](#-core-javascript-concepts) · [💻 Programs](#-javascript-programs) · [🚀 Quick Start](#-quick-start) · [🗺️ Learning Path](#-learning-path)
 
