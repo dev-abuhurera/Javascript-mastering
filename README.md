@@ -8,7 +8,7 @@
 
 [![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Status](https://img.shields.io/badge/Status-In%20Progress-0077B6?style=for-the-badge)](https://github.com)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
 
 
 [📚 Core Concepts](#-core-javascript-concepts) · [💻 Programs](#-javascript-programs) · [🚀 Quick Start](#-quick-start) · [🗺️ Learning Path](#-learning-path)
