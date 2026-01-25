@@ -7,7 +7,7 @@
 **Not just writing JavaScript — understanding how it thinks.**
 
 [![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Status](https://img.shields.io/badge/Status-In%20Progress-0077B6?style=for-the-badge)](https://github.com)
+
 
 
 
