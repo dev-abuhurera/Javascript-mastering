@@ -11,13 +11,13 @@
 
 
 
-[📚 Core Concepts](#-core-javascript-concepts) · [💻 Programs](#-javascript-programs) · [🚀 Quick Start](#-quick-start) · [🗺️ Learning Path](#-learning-path)
+[Core Concepts](#-core-javascript-concepts) · [Programs](#-javascript-programs) · [Quick Start](#-quick-start) · [Learning Path](#-learning-path)
 
 </div>
 
 ---
 
-## 📖 About This Repository
+## About This Repository
 
 This repository documents my journey to **truly understand JavaScript** — not just memorize syntax, but grasp the fundamental mechanics behind every line of code.
 
@@ -30,7 +30,7 @@ This repository documents my journey to **truly understand JavaScript** — not 
 
 ---
 
-## 🧭 Learning Path
+## Learning Path
 
 JavaScript concepts build upon each other. Here's the recommended learning order:
 
@@ -49,7 +49,7 @@ JavaScript concepts build upon each other. Here's the recommended learning order
 
 ---
 
-## 📚 Core JavaScript Concepts
+## Core JavaScript Concepts
 
 Understanding JavaScript from the inside out.
 
@@ -69,7 +69,7 @@ Understanding JavaScript from the inside out.
 
 ---
 
-## 💻 JavaScript Programs
+## JavaScript Programs
 
 Real-world applications of core concepts.
 
@@ -86,7 +86,7 @@ Real-world applications of core concepts.
 
 ---
 
-## 💡 How to Use This Repository
+## How to Use This Repository
 
 ### Method 1: Sequential Learning (Recommended for Beginners)
 Follow the files in order, mastering each concept before moving forward.
