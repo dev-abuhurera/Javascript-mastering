@@ -8,9 +8,6 @@
 
 [![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-
-
-
 [Core Concepts](#-core-javascript-concepts) · [Programs](#-javascript-programs) · [Quick Start](#-quick-start) · [Learning Path](#-learning-path)
 
 </div>
@@ -100,30 +97,201 @@ Start with programs, then dive into concepts when you need deeper understanding.
 ### Method 4: Mixed Approach
 Alternate between programs and concepts to see theory and practice together.
 
+---
+
+## Understanding JavaScript Execution Flow
+
+### JavaScript Runtime Architecture
+
+<img width="817" height="729" alt="JavaScript Runtime Components" src="https://github.com/user-attachments/assets/2e805baa-f88a-4aeb-bcce-983c92acfdad" />
+
+The JavaScript runtime consists of three main components:
+- **Call Stack**: Where function execution contexts are tracked
+- **Heap**: Where objects and variables are stored in memory
+- **Web APIs**: Browser-provided features (timers, DOM, fetch, etc.)
 
 ---
 
-## Javascript Runtime
+### Complete Execution Flow Visualization
 
+<img width="1112" height="720" alt="Complete JavaScript Execution Flow" src="https://github.com/user-attachments/assets/2a47a8c5-031a-4eb8-82ce-bab672637cbb" />
 
-<img width="817" height="729" alt="annotated-screenshot" src="https://github.com/user-attachments/assets/2e805baa-f88a-4aeb-bcce-983c92acfdad" />
+#### Step 1: Synchronous Code Execution
 
+```javascript
+console.log('Start');
 
-## Complete Flow
+function greet(name) {
+  return `Hello, ${name}!`;
+}
 
-<img width="1112" height="720" alt="annotated-screenshot (1)" src="https://github.com/user-attachments/assets/2a47a8c5-031a-4eb8-82ce-bab672637cbb" />
+const message = greet('JavaScript');
+console.log(message);
 
+console.log('End');
+```
 
-<img width="810" height="720" alt="annotated-screenshot (2)" src="https://github.com/user-attachments/assets/11ecb6a1-fcab-4b1a-8fdc-06c21ab21ac2" />
-
-
-<img width="810" height="720" alt="annotated-screenshot (3)" src="https://github.com/user-attachments/assets/2fff3643-d3f0-478f-aacf-4080b887c8d7" />
-
-
-
-### This will help visualize the concepts that are composed into the whole repo
+**What happens:**
+1. Global execution context is created
+2. `console.log('Start')` executes → prints "Start"
+3. `greet('JavaScript')` is called → new execution context created
+4. Function returns value → execution context removed from stack
+5. `console.log(message)` executes → prints "Hello, JavaScript!"
+6. `console.log('End')` executes → prints "End"
 
 ---
+
+<img width="810" height="720" alt="Asynchronous Operations" src="https://github.com/user-attachments/assets/11ecb6a1-fcab-4b1a-8fdc-06c21ab21ac2" />
+
+#### Step 2: Asynchronous Operations (Web APIs & Callback Queue)
+
+```javascript
+console.log('First');
+
+setTimeout(() => {
+  console.log('Second');
+}, 0);
+
+console.log('Third');
+
+// Output:
+// First
+// Third
+// Second (after call stack is empty)
+```
+
+**What happens:**
+1. `console.log('First')` executes immediately → prints "First"
+2. `setTimeout` is encountered → handed off to Web API
+3. `console.log('Third')` executes → prints "Third"
+4. Timer completes in Web API → callback moves to Callback Queue
+5. Event loop checks if call stack is empty
+6. Callback is pushed to call stack → prints "Second"
+
+---
+
+<img width="810" height="720" alt="Event Loop in Action" src="https://github.com/user-attachments/assets/2fff3643-d3f0-478f-aacf-4080b887c8d7" />
+
+#### Step 3: The Event Loop in Action
+
+```javascript
+console.log('A');
+
+setTimeout(() => {
+  console.log('B');
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('C');
+});
+
+console.log('D');
+
+// Output:
+// A
+// D
+// C (microtask - higher priority)
+// B (macrotask - lower priority)
+```
+
+**What happens:**
+1. Synchronous code executes first: A, D
+2. Promise callback goes to **Microtask Queue** (higher priority)
+3. setTimeout callback goes to **Callback Queue** (lower priority)
+4. Event loop prioritizes microtasks → C executes
+5. Then macrotasks → B executes
+
+**Key Insight:** Microtasks (Promises) always execute before macrotasks (setTimeout, setInterval)
+
+---
+
+### Complete Flow Example
+
+Here's a comprehensive example demonstrating all concepts:
+
+```javascript
+function fetchUserData(userId) {
+  console.log('1. Fetching user data...');
+  
+  // Simulating API call
+  setTimeout(() => {
+    console.log('3. Data received from server');
+    
+    // Process data
+    const userData = { id: userId, name: 'John Doe' };
+    
+    // Update UI (microtask)
+    Promise.resolve(userData).then(data => {
+      console.log('4. Processing:', data);
+    });
+    
+  }, 1000);
+  
+  console.log('2. Request sent, waiting for response...');
+}
+
+fetchUserData(123);
+console.log('5. Main thread continues...');
+
+// Execution Order:
+// 1. Fetching user data...
+// 2. Request sent, waiting for response...
+// 5. Main thread continues...
+// 3. Data received from server
+// 4. Processing: { id: 123, name: 'John Doe' }
+```
+
+**Execution breakdown:**
+1. Function called → execution context created
+2. First `console.log` executes (line 2)
+3. `setTimeout` registered with Web API → timer starts
+4. Second `console.log` executes (line 15)
+5. Function returns → execution context removed
+6. Last `console.log` executes (line 19)
+7. After 1 second, callback moves to queue
+8. Callback executes when stack is clear
+9. Promise microtask executes before any other waiting macrotasks
+
+---
+
+### Understanding Closures in the Execution Flow
+
+```javascript
+function createCounter() {
+  let count = 0; // Stored in heap, referenced by closure
+  
+  return function increment() {
+    count++;
+    console.log(count);
+  };
+}
+
+const counter1 = createCounter();
+const counter2 = createCounter();
+
+counter1(); // 1
+counter1(); // 2
+counter2(); // 1 (separate closure)
+```
+
+**Memory visualization:**
+- Each `createCounter()` call creates a new execution context
+- The returned function "closes over" the `count` variable
+- Each counter maintains its own separate `count` in the heap
+- Even after `createCounter()` finishes, the closure keeps `count` alive
+
+---
+
+### These visualizations help understand:
+
+✅ How the call stack manages function execution  
+✅ Where variables and objects live in memory (heap)  
+✅ How asynchronous code doesn't block the main thread  
+✅ Why promises execute before setTimeout callbacks  
+✅ How closures retain access to outer scope variables  
+
+---
+
 ## Quick Start
 
 ### For Complete Beginners
@@ -137,4 +305,41 @@ cd JavaScript-Mastering
 node "JavaScript Programs/01_variables.js"
 ```
 
+### Prerequisites
+- Node.js installed (v14 or higher)
+- Basic understanding of programming concepts
+- A code editor (VS Code recommended)
 
+### Running the Code
+
+```bash
+# Run concept files
+node "Core Concepts/hoisting.js"
+
+# Run program files
+node "JavaScript Programs/01_variables.js"
+```
+
+---
+
+## Additional Resources
+
+- [MDN JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide) - Comprehensive documentation
+- [JavaScript.info](https://javascript.info/) - Modern JavaScript tutorial
+- [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) - Deep dive into JavaScript mechanics
+
+---
+
+## Contributing
+
+Found an error or want to add an example? Feel free to open an issue or submit a pull request!
+
+---
+
+<div align="center">
+
+**Happy Learning! 🚀**
+
+*Remember: Understanding beats memorization every time.*
+
+</div>
