@@ -108,18 +108,21 @@ Alternate between programs and concepts to see theory and practice together.
 <img width="817" height="729" alt="image" src="https://github.com/user-attachments/assets/c56816ce-9518-4275-ad04-9a0112cfa546" />
 
 
+## Functionalities of Runtime 
 
-### Using Browser Console
-1. Open DevTools (F12 or Cmd+Option+I)
-2. Navigate to Console
-3. Copy and paste code
-4. Experiment and modify
+<img width="878" height="720" alt="image" src="https://github.com/user-attachments/assets/b7e04e32-926b-47de-9bb7-eba5ad41adb7" />
 
-### Using VS Code
-1. Install Code Runner extension
-2. Right-click on any file
-3. Select "Run Code"
-4. View output in terminal
+
+## Secondly
+
+<img width="878" height="720" alt="image" src="https://github.com/user-attachments/assets/6c312462-7215-4867-a831-a94ea545f485" />
+
+## Thirdly
+
+<img width="878" height="720" alt="image" src="https://github.com/user-attachments/assets/a2178501-dfe9-49cb-b1cf-6f9d1983be4b" />
+
+
+### This will help visualize the concepts that are composed into the whole repo
 
 ---
 ## Quick Start
