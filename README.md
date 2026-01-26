@@ -204,7 +204,7 @@ console.log('Third');
 
 ---
 
-<img width="750" height="582" alt="image" src="https://github.com/user-attachments/assets/77396e99-7d26-4dd2-bf08-2fd987d9a15c" />
+<img width="783" height="685" alt="Screenshot From 2026-01-27 01-38-37" src="https://github.com/user-attachments/assets/4c2ea560-afef-4eef-b2ec-a3d0714b32fc" />
 
 
 #### Step 3: The Event Loop in Action
