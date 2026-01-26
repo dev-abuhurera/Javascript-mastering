@@ -134,22 +134,6 @@ The console lets you:
 
 ---
 
-## How to Use This Repository
-
-### Method 1: Sequential Learning (Recommended for Beginners)
-Follow the files in order, mastering each concept before moving forward.
-
-### Method 2: Topic-Based (For Specific Needs)
-Jump to any concept that interests you or that you need to understand.
-
-### Method 3: Program-First (For Practical Learners)
-Start with programs, then dive into concepts when you need deeper understanding.
-
-### Method 4: Mixed Approach
-Alternate between programs and concepts to see theory and practice together.
-
----
-
 ## Understanding JavaScript Execution Flow
 
 ### JavaScript Runtime Architecture
@@ -340,6 +324,22 @@ counter2(); // 1 (separate closure)
 ✅ How asynchronous code doesn't block the main thread  
 ✅ Why promises execute before setTimeout callbacks  
 ✅ How closures retain access to outer scope variables  
+
+---
+
+## How to Use This Repository
+
+### Method 1: Sequential Learning (Recommended for Beginners)
+Follow the files in order, mastering each concept before moving forward.
+
+### Method 2: Topic-Based (For Specific Needs)
+Jump to any concept that interests you or that you need to understand.
+
+### Method 3: Program-First (For Practical Learners)
+Start with programs, then dive into concepts when you need deeper understanding.
+
+### Method 4: Mixed Approach
+Alternate between programs and concepts to see theory and practice together.
 
 ---
 
