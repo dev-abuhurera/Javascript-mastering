@@ -140,8 +140,7 @@ console.log('End');
 6. `console.log('End')` executes → prints "End"
 
 ---
-
-<img width="810" height="720" alt="Asynchronous Operations" src="https://github.com/user-attachments/assets/11ecb6a1-fcab-4b1a-8fdc-06c21ab21ac2" />
+<img width="1131" height="647" alt="image" src="https://github.com/user-attachments/assets/6c205888-3eba-4ee8-8152-8cd2a1c0efe7" />
 
 #### Step 2: Asynchronous Operations (Web APIs & Callback Queue)
 
