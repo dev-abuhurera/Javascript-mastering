@@ -114,7 +114,8 @@ The JavaScript runtime consists of three main components:
 
 ### Complete Execution Flow Visualization
 
-<img width="1112" height="720" alt="Complete JavaScript Execution Flow" src="https://github.com/user-attachments/assets/2a47a8c5-031a-4eb8-82ce-bab672637cbb" />
+<img width="1131" height="647" alt="image" src="https://github.com/user-attachments/assets/fdfc5f52-f558-4475-9bd7-adff2e1c6b85" />
+
 
 #### Step 1: Synchronous Code Execution
 
@@ -140,7 +141,8 @@ console.log('End');
 6. `console.log('End')` executes → prints "End"
 
 ---
-<img width="1131" height="647" alt="image" src="https://github.com/user-attachments/assets/6c205888-3eba-4ee8-8152-8cd2a1c0efe7" />
+
+<img width="799" height="654" alt="image" src="https://github.com/user-attachments/assets/fd63593e-9add-4ee0-8b94-b2fe3a5390fb" />
 
 #### Step 2: Asynchronous Operations (Web APIs & Callback Queue)
 
