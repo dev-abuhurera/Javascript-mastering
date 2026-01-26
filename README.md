@@ -105,21 +105,20 @@ Alternate between programs and concepts to see theory and practice together.
 
 ## Javascript Runtime
 
-<img width="817" height="729" alt="image" src="https://github.com/user-attachments/assets/c56816ce-9518-4275-ad04-9a0112cfa546" />
+
+<img width="817" height="729" alt="annotated-screenshot" src="https://github.com/user-attachments/assets/2e805baa-f88a-4aeb-bcce-983c92acfdad" />
 
 
-## Functionalities of Runtime 
+## Complete Flow
 
-<img width="878" height="720" alt="image" src="https://github.com/user-attachments/assets/b7e04e32-926b-47de-9bb7-eba5ad41adb7" />
+<img width="1112" height="720" alt="annotated-screenshot (1)" src="https://github.com/user-attachments/assets/2a47a8c5-031a-4eb8-82ce-bab672637cbb" />
 
 
-## Secondly
+<img width="810" height="720" alt="annotated-screenshot (2)" src="https://github.com/user-attachments/assets/11ecb6a1-fcab-4b1a-8fdc-06c21ab21ac2" />
 
-<img width="878" height="720" alt="image" src="https://github.com/user-attachments/assets/6c312462-7215-4867-a831-a94ea545f485" />
 
-## Thirdly
+<img width="810" height="720" alt="annotated-screenshot (3)" src="https://github.com/user-attachments/assets/2fff3643-d3f0-478f-aacf-4080b887c8d7" />
 
-<img width="878" height="720" alt="image" src="https://github.com/user-attachments/assets/a2178501-dfe9-49cb-b1cf-6f9d1983be4b" />
 
 
 ### This will help visualize the concepts that are composed into the whole repo
