@@ -147,9 +147,8 @@ The JavaScript runtime consists of three main components:
 
 ---
 
-### Complete Execution Flow Visualization
+### Complete Execution Flow Visualization<img width="1096" height="645" alt="image" src="https://github.com/user-attachments/assets/1a78654e-aa7b-4156-94cf-bb4185a4c958" />
 
-<img width="1112" height="720" alt="Complete JavaScript Execution Flow" src="https://github.com/user-attachments/assets/2a47a8c5-031a-4eb8-82ce-bab672637cbb" />
 
 #### Step 1: Synchronous Code Execution
 
