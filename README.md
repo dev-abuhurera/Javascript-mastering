@@ -6,8 +6,6 @@
 
 [![JavaScript](https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-[Core Concepts](#-core-javascript-concepts) · [Programs](#-javascript-programs) · [Quick Start](#-quick-start) · [Learning Path](#-learning-path)
-
 </div>
 
 ---
