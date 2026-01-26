@@ -83,6 +83,63 @@ Real-world applications of core concepts.
 
 ---
 
+## Dev Console: Your JavaScript Playground
+
+<img width="784" height="405" alt="Browser Developer Console showing JavaScript execution" src="https://github.com/user-attachments/assets/e1ed5022-d4b7-4394-a8d0-5f8a9a550147" />
+
+### Using the Browser Console
+
+The browser's developer console is your best friend when learning JavaScript. Here's how to use it:
+
+**Try these examples in the console:**
+
+```javascript
+// Basic output
+console.log('Hello, JavaScript!');
+
+// Variable inspection
+let name = 'Developer';
+console.log(name);
+
+// Object logging
+const user = { name: 'John', age: 25 };
+console.log(user);
+
+// Checking execution time
+console.time('myLoop');
+for(let i = 0; i < 1000; i++) {}
+console.timeEnd('myLoop');
+
+// Viewing the call stack
+function outer() {
+  function inner() {
+    console.trace('Call stack trace');
+  }
+  inner();
+}
+outer();
+```
+
+**Console Tips:**
+- Use `console.table()` to display arrays and objects in table format
+- Use `console.dir()` to see all properties of an object
+- Use `console.clear()` to clear the console
+- Press `↑` arrow to cycle through previous commands
+- Type variable names directly to inspect their values
+
+### Why the Console Matters
+
+The console lets you:
+- ✅ Test code snippets instantly without creating files
+- ✅ Debug by logging variable values at different points
+- ✅ Experiment with JavaScript features in real-time
+- ✅ See errors and stack traces when code breaks
+- ✅ Inspect DOM elements and run commands on live websites
+
+**Pro Tip:** Before running code from files, try it in the console first. It's faster for testing small concepts!
+
+---
+
 ## How to Use This Repository
 
 ### Method 1: Sequential Learning (Recommended for Beginners)
@@ -114,8 +171,7 @@ The JavaScript runtime consists of three main components:
 
 ### Complete Execution Flow Visualization
 
-<img width="1131" height="647" alt="image" src="https://github.com/user-attachments/assets/fdfc5f52-f558-4475-9bd7-adff2e1c6b85" />
-
+<img width="1112" height="720" alt="Complete JavaScript Execution Flow" src="https://github.com/user-attachments/assets/2a47a8c5-031a-4eb8-82ce-bab672637cbb" />
 
 #### Step 1: Synchronous Code Execution
 
@@ -142,7 +198,7 @@ console.log('End');
 
 ---
 
-<img width="799" height="654" alt="image" src="https://github.com/user-attachments/assets/fd63593e-9add-4ee0-8b94-b2fe3a5390fb" />
+<img width="810" height="720" alt="Asynchronous Operations" src="https://github.com/user-attachments/assets/11ecb6a1-fcab-4b1a-8fdc-06c21ab21ac2" />
 
 #### Step 2: Asynchronous Operations (Web APIs & Callback Queue)
 
@@ -337,3 +393,10 @@ Found an error or want to add an example? Feel free to open an issue or submit a
 
 ---
 
+<div align="center">
+
+**Happy Learning! 🚀**
+
+*Remember: Understanding beats memorization every time.*
+
+</div>
