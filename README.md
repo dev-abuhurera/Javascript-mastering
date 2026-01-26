@@ -46,17 +46,26 @@ Understanding JavaScript from the inside out.
 
 | File | Topic | Description |
 |------|-------|-------------|
+| `CallbackFunction.js` | Callback Functions | Functions passed as arguments to other functions |
+| `Eventloop.js` | Event Loop | How JavaScript handles asynchronous operations |
+| `Function_invocation_and_variable_envi.js` | Function Invocation | Function calls and execution contexts |
 | `How_js_code_executed.js` | Code Execution | How JavaScript processes code line by line |
-| `hoisting.js` | Hoisting | Variable and function declarations before execution |
-| `temporal_dead_zone.js` | Temporal Dead Zone | The period before variable initialization |
-| `block_scoping_and_shadowing.js` | Block Scoping | How `let` and `const` create scope boundaries |
-| `scoping_and_Lexical_Environment.js` | Lexical Environment | Variable accessibility based on code structure |
-| `closures.js` | Closures | Functions retaining outer scope access |
-| `Function_invocation_and_variable_envi...js` | Function Invocation | Function calls and execution contexts |
-| `Introduction_to_this.js` | The `this` Keyword | Context binding patterns |
-| `undefined_vs_notDefined.js` | Undefined vs Not Defined | Key differences in variable states |
+| `How_to_run_DOM.html` | DOM Basics | Running JavaScript in the browser |
 | `Javascript_progExe_part2.js` | Advanced Execution | Complex execution patterns |
 | `LanguageEssentials.js` | Language Basics | Core JavaScript features |
+| `Promises.js` | Promises | Handling asynchronous operations with promises |
+| `Smallest.javascript.Program.js` | Minimal Program | The simplest valid JavaScript program |
+| `async_await.js` | Async/Await | Modern asynchronous programming syntax |
+| `block_scoping_and_shadowing.js` | Block Scoping | How `let` and `const` create scope boundaries |
+| `callback_hell.js` | Callback Hell | Problems with nested callbacks |
+| `closures.js` | Closures | Functions retaining outer scope access |
+| `hoisting.js` | Hoisting | Variable and function declarations before execution |
+| `promise_api.js` | Promise API | Promise methods and utilities |
+| `scoping_and_Lexical_Environment.js` | Lexical Environment | Variable accessibility based on code structure |
+| `settimeout_and_closures.js` | setTimeout & Closures | How closures work with timers |
+| `temporal_dead_zone.js` | Temporal Dead Zone | The "no-access" period for variables |
+| `this.js` | The `this` Keyword | Understanding context binding |
+| `undefined_vs_notDefined.js` | Undefined vs Not Defined | Key differences in variable states |
 
 ---
 
@@ -66,14 +75,21 @@ Real-world applications of core concepts.
 
 | # | File | Topic | Level |
 |---|------|-------|-------|
-| 01 | `01_variables.js` | Variables & Declaration | 🟢 Beginner |
-| 02 | `02_datatypes.js` | Data Types | 🟢 Beginner |
-| 03 | `03_conversionOperation.js` | Type Conversion | 🟡 Intermediate |
-| 04 | `04_datatypeComparison.js` | Comparison Operators | 🟡 Intermediate |
+| 01 | `01_variables.js` | Variable Declaration (var, let, const) | 🟢 Beginner |
+| 02 | `02_datatypes.js` | Primitive & Reference Types | 🟢 Beginner |
+| 03 | `03_conversionOperation.js` | Type Conversion & Coercion | 🟡 Intermediate |
+| 04 | `04_datatypeComparison.js` | Equality & Comparison Operators | 🟡 Intermediate |
 | 05 | `05_Stack_and_heap.js` | Memory Management | 🟡 Intermediate |
-| 06 | `06_Strings.js` | String Methods | 🟢 Beginner |
-| 07 | `07_Number_and_Math.js` | Numbers & Math | 🟢 Beginner |
-| 08 | `08_Data_and_Time.js` | Date & Time | 🟡 Intermediate |
+| 06 | `06_Strings.js` | String Methods & Manipulation | 🟢 Beginner |
+| 07 | `07_Number_and_Math.js` | Numbers & Math Operations | 🟢 Beginner |
+| 08 | `08_Data_and_Time.js` | Date & Time Handling | 🟡 Intermediate |
+| 09 | `09_spreadOperator.js` | Spread Operator Usage | 🟡 Intermediate |
+| 10 | `10_map_method.js` | Array.map() Method | 🟡 Intermediate |
+| 11 | `11_filter_method.js` | Array.filter() Method | 🟡 Intermediate |
+| 12 | `12_reduce_method.js` | Array.reduce() Method | 🔴 Advanced |
+| 13 | `13_Arrow_function.js` | Arrow Function Syntax | 🟡 Intermediate |
+| 14 | `14_Arrays.js` | Array Methods & Operations | 🟢 Beginner |
+
 
 ---
 
