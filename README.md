@@ -337,10 +337,3 @@ Found an error or want to add an example? Feel free to open an issue or submit a
 
 ---
 
-<div align="center">
-
-**Happy Learning! 🚀**
-
-*Remember: Understanding beats memorization every time.*
-
-</div>
