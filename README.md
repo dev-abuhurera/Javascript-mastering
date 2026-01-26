@@ -103,6 +103,12 @@ Alternate between programs and concepts to see theory and practice together.
 
 ---
 
+## Javascript Runtime
+
+<img width="817" height="729" alt="image" src="https://github.com/user-attachments/assets/c56816ce-9518-4275-ad04-9a0112cfa546" />
+
+
+
 ### Using Browser Console
 1. Open DevTools (F12 or Cmd+Option+I)
 2. Navigate to Console
